@@ -1,0 +1,26 @@
+{
+  "name": "@osml/graph-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared OSML graph model, layout (ELK) and React-Flow node components used by the Statum console and the openstatemachine.org sandbox.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/osml/types.ts",
+    "./validate": "./src/osml/validate.ts",
+    "./edgeLabels": "./src/osml/edgeLabels.ts",
+    "./toGraph": "./src/osml/toGraph.ts",
+    "./layout": "./src/osml/layout.ts",
+    "./graph.css": "./src/graph.css",
+    "./StateNode": "./src/components/StateNode.tsx",
+    "./EndpointNode": "./src/components/EndpointNode.tsx",
+    "./ContainerNode": "./src/components/ContainerNode.tsx"
+  },
+  "peerDependencies": {
+    "@xyflow/react": "*",
+    "ajv": "*",
+    "elkjs": "*",
+    "react": "*",
+    "react-dom": "*"
+  }
+}

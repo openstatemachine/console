@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+const siteUrl = 'https://openstatemachine.org'
+const sandboxUrl = 'https://sandbox.openstatemachine.org'
+const githubUrl = 'https://github.com/openstatemachine'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Open State Machine',
+      description:
+        'Open-source workflow engine. Define workflows in OSML and run them on Statum.',
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Open State Machine',
+      url: siteUrl,
+      logo: `${siteUrl}/favicon.svg`,
+      sameAs: [githubUrl],
+    },
+  ],
+}
+---
+
+<Layout
+  title="Open State Machine — OSML workflows, runs on Statum"
+  description="Open State Machine is an open-source workflow engine. Define workflows in OSML (Open State Machine Language) and run them on Statum — express in-process or durable step-by-step, journal-first, Postgres-backed."
+  ogTitle="Open State Machine"
+  ogDescription="Fast and durable, self-hosted workflow orchestration. Try OSML in your browser."
+  ogUrl={siteUrl}
+  jsonLd={jsonLd}
+>
+  <Nav />
+
+  <!-- ================= Hero ================= -->
+  <section id="top" class="hero">
+    <div class="container">
+      <span class="eyebrow">Open source workflow engine</span>
+      <h1>Fast and durable workflow orchestration, open and self-hosted</h1>
+      <p class="lead">
+        Define workflows in <span class="hero-code">OSML</span> — the Open State Machine
+        Language — and run them on <span class="hero-code">Statum</span>: a journal-first,
+        Postgres-backed engine that runs express workflows in-process and long-running
+        ones as durable, crash-safe steps.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href={sandboxUrl}>Try the Sandbox</a>
+        <a class="btn btn-secondary btn-lg" href={githubUrl}>View on GitHub</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">9</div>
+          <div class="stat-label">OSML state types</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Task backends</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2</div>
+          <div class="stat-label">Express &amp; Standard modes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Features ================= -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Everything you need to orchestrate work</h2>
+        <p>
+          A production-oriented engine with an open language, express or durable execution,
+          and no vendor lock-in.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="feature-card">
+          <div class="feature-icon">ƒ</div>
+          <h3>OSML language</h3>
+          <p>
+            Task, Choice, Parallel, Map, Wait, Pass, Succeed, Fail and StartExecution —
+            defined in portable JSON with a published JSON Schema.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Express &amp; Standard</h3>
+          <p>
+            <strong>Express</strong> runs workflows in-process to completion — low latency,
+            ideal for short-lived work. <strong>Standard</strong> steps through a durable
+            Postgres queue with crash-safe recovery.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">⛁</div>
+          <h3>Journal-first</h3>
+          <p>
+            An append-only event journal is the source of truth. Execution state is a
+            projection replayed from the journal — auditable for every mode, crash-safe
+            for Standard.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">⚙</div>
+          <h3>Multiple task backends</h3>
+          <p>
+            Inline JavaScript (GraalVM), HTTP calls, Java handlers, task tokens,
+            activities, and human approval — plus a plugin SPI.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">↻</div>
+          <h3>Retry &amp; Catch</h3>
+          <p>
+            Per-state retries with backoff and error catching, JSONPath and optional
+            JSONata I/O, intrinsics, and cooperative cancellation.
+          </p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">⬡</div>
+          <h3>Versioning &amp; aliases</h3>
+          <p>
+            Publish new versions, pin aliases, run sync or async, and observe every
+            transition with Micrometer/Prometheus metrics.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Sandbox ================= -->
+  <section id="sandbox" class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <h2>Try OSML in your browser</h2>
+        <p>
+          Edit a workflow, watch the diagram update live, and validate against the OSML
+          schema. Connect a Statum engine to execute it end to end.
+        </p>
+        <div class="hero-cta" style="margin-top: 1.5rem">
+          <a class="btn btn-primary btn-lg" href={sandboxUrl}>Open the Sandbox</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= How it works ================= -->
+  <section id="how" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>From a JSON definition to a fast or durable, observable execution in four steps.</p>
+      </div>
+      <div class="grid-4">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Define OSML</h3>
+          <p>Describe states, transitions, retries and error handling in JSON.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Register</h3>
+          <p>Publish the machine to Statum over REST and get a versioned name.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Execute</h3>
+          <p>Run express workflows in-process or start Standard executions on the durable step queue.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Inspect</h3>
+          <p>Replay the journal, view history, and debug step by step in the self-hosted console.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA band ================= -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Own your orchestration layer</h2>
+      <p>
+        Open State Machine is free and self-hosted. Run Statum next to your services and
+        keep your workflows portable.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-secondary btn-lg" href={sandboxUrl}>Open the Sandbox</a>
+        <a class="btn btn-dark btn-lg" href={githubUrl}>Get started on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Open State Machine">
+  <defs>
+    <linearGradient id="osm" gradientUnits="userSpaceOnUse" x1="104" y1="256" x2="408" y2="256">
+      <stop offset="0" stop-color="#2530d9"/>
+      <stop offset="0.5" stop-color="#0f8edf"/>
+      <stop offset="1" stop-color="#08c6d2"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#osm)" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke-width="16">
+      <circle cx="257" cy="155" r="58"/>
+      <circle cx="104" cy="359" r="54.5"/>
+      <circle cx="408" cy="359" r="54.3"/>
+    </g>
+    <g stroke-width="9.5">
+      <line x1="218.0" y1="207.0" x2="148.7" y2="299.4"/><polyline points="172.4,288.8 148.7,299.4 152.3,273.6"/>
+      <line x1="295.7" y1="207.2" x2="363.8" y2="299.3"/><polyline points="360.4,273.5 363.8,299.3 340.1,288.5"/>
+      <line x1="165.5" y1="359.0" x2="333.7" y2="359.0"/><polyline points="311.0,346.4 333.7,359.0 311.0,371.6"/>
+    </g>
+  </g>
+</svg>
