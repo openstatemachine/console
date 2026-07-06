@@ -12,7 +12,7 @@ Security fixes are applied to the latest release on the `main` branch.
 
 **Please do not open a public GitHub issue for security vulnerabilities.**
 
-Report security issues privately via [GitHub Security Advisories](https://github.com/fearlessfara/open-state-machine/security/advisories/new) (preferred) or by contacting the maintainers through a private channel if you already have one.
+Report security issues privately via [GitHub Security Advisories](https://github.com/openstatemachine/console/security/advisories/new) (preferred) or by contacting the maintainers through a private channel if you already have one.
 
 Include:
 

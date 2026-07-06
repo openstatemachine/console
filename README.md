@@ -24,7 +24,7 @@ The console is always a **separate artifact** from the engine jar. In production
 Terminal 1 — engine (from the engine repository):
 
 ```bash
-mvn -pl statum-engine spring-boot:run
+mvn -pl engine spring-boot:run
 ```
 
 Terminal 2 — console:

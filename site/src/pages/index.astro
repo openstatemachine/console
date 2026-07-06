@@ -5,7 +5,8 @@ import Footer from '../components/Footer.astro'
 
 const siteUrl = 'https://openstatemachine.org'
 const sandboxUrl = 'https://sandbox.openstatemachine.org'
-const githubUrl = 'https://github.com/openstatemachine'
+const engineRepoUrl = 'https://github.com/openstatemachine/engine'
+const consoleRepoUrl = 'https://github.com/openstatemachine/console'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -24,7 +25,7 @@ const jsonLd = {
       name: 'Open State Machine',
       url: siteUrl,
       logo: `${siteUrl}/favicon.svg`,
-      sameAs: [githubUrl],
+      sameAs: [engineRepoUrl, consoleRepoUrl],
     },
   ],
 }
@@ -53,7 +54,7 @@ const jsonLd = {
       </p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-lg" href={sandboxUrl}>Try the Sandbox</a>
-        <a class="btn btn-secondary btn-lg" href={githubUrl}>View on GitHub</a>
+        <a class="btn btn-secondary btn-lg" href={engineRepoUrl}>View on GitHub</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
@@ -195,7 +196,7 @@ const jsonLd = {
       </p>
       <div class="hero-cta">
         <a class="btn btn-secondary btn-lg" href={sandboxUrl}>Open the Sandbox</a>
-        <a class="btn btn-dark btn-lg" href={githubUrl}>Get started on GitHub</a>
+        <a class="btn btn-dark btn-lg" href={engineRepoUrl}>Get started on GitHub</a>
       </div>
     </div>
   </section>

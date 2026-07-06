@@ -11,7 +11,7 @@ git clone https://github.com/openstatemachine/console.git
 cd console/frontend && npm install && npm run dev
 ```
 
-Run the engine separately (`mvn -pl statum-engine spring-boot:run` in the engine repo). The Vite dev server proxies `/api` to `http://localhost:8080`.
+Run the engine separately (`mvn -pl engine spring-boot:run` in the [engine repo](https://github.com/openstatemachine/engine)). The Vite dev server proxies `/api` to `http://localhost:8080`.
 
 ## Pull requests
 
