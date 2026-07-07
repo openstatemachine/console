@@ -9,7 +9,8 @@ interface PaletteItem {
 
 const ACTION_ITEMS: PaletteItem[] = [
   { type: 'Task', label: 'Task', description: 'Run JS, HTTP, an activity, or wait for a token.' },
-  { type: 'StartExecution', label: 'Start Execution', description: 'Invoke another state machine.' },
+  { type: 'Http', label: 'HTTP', description: 'Call an external HTTP API with first-class Url, Method, Headers, Body.' },
+  { type: 'StartExecution', label: 'Start Execution', description: 'Invoke another state machine (sync or async).' },
 ]
 
 const FLOW_ITEMS: PaletteItem[] = [

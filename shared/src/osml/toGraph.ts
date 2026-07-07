@@ -367,6 +367,7 @@ export function assignSourceHandles(nodes: Node[], edges: Edge[]): void {
 export function stateTypeGlyph(type: string): string {
   switch (type) {
     case 'Task': return 'ƒ'
+    case 'Http': return '⇄'
     case 'Choice': return '⋔'
     case 'Parallel': return '∥'
     case 'Map': return '⊞'
@@ -391,6 +392,10 @@ export function stateTypeLabel(state: OsmlState): string {
     }
     return `${state.Type} · ${pretty[resource] ?? resource}`
   }
+  if (state.Type === 'Http') {
+    const url = (state as { Url?: string }).Url ?? 'URL'
+    return `Http · ${url}`
+  }
   if (state.Type === 'Parallel') return 'Parallel'
   if (state.Type === 'Map') return 'Map'
   return state.Type
@@ -400,6 +405,8 @@ export function stateTypeStyle(type: string): { background: string; border: stri
   switch (type) {
     case 'Task':
       return { background: '#e8f4fd', border: '#0073bb', color: '#0073bb' }
+    case 'Http':
+      return { background: '#e0f2fe', border: '#0284c7', color: '#0369a1' }
     case 'Choice':
       return { background: '#fff8e1', border: '#ff9900', color: '#b45309' }
     case 'Parallel':

@@ -35,6 +35,17 @@ const taskSchema: RJSFSchema = {
   },
 }
 
+const httpSchema: RJSFSchema = {
+  type: 'object',
+  properties: {
+    ...commonSchema.properties,
+    Url: { type: 'string', title: 'Url' },
+    Method: { type: 'string', title: 'Method', enum: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] },
+    Headers: { type: 'object', title: 'Headers', additionalProperties: { type: 'string' } },
+    Body: { title: 'Body' },
+  },
+}
+
 const passSchema: RJSFSchema = {
   type: 'object',
   properties: {
@@ -47,7 +58,11 @@ const waitSchema: RJSFSchema = {
   properties: {
     ...commonSchema.properties,
     Seconds: { type: 'integer', title: 'Seconds' },
+    SecondsPath: { type: 'string', title: 'SecondsPath' },
+    Timestamp: { type: 'string', title: 'Timestamp (ISO-8601)' },
+    TimestampPath: { type: 'string', title: 'TimestampPath' },
   },
+  description: 'Set exactly one timing field: Seconds, SecondsPath, Timestamp, or TimestampPath.',
 }
 
 const failSchema: RJSFSchema = {
@@ -63,6 +78,7 @@ const startExecSchema: RJSFSchema = {
   properties: {
     ...commonSchema.properties,
     StateMachineName: { type: 'string', title: 'StateMachineName' },
+    RunMode: { type: 'string', title: 'RunMode', enum: ['async', 'sync'] },
     Next: { type: 'string', title: 'Next' },
     End: { type: 'boolean', title: 'End' },
   },
@@ -71,6 +87,7 @@ const startExecSchema: RJSFSchema = {
 function schemaForState(state: OsmlState): RJSFSchema {
   switch (state.Type) {
     case 'Task': return taskSchema
+    case 'Http': return httpSchema
     case 'Pass': return passSchema
     case 'Wait': return waitSchema
     case 'Fail': return failSchema

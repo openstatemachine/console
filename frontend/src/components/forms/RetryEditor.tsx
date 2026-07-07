@@ -52,11 +52,25 @@ export function RetryEditor({ value, onChange }: Props) {
             />
           </label>
           <label>
+            IntervalSecondsPath
+            <input
+              value={policy.IntervalSecondsPath ?? ''}
+              onChange={(e) => update(i, { IntervalSecondsPath: e.target.value || undefined })}
+            />
+          </label>
+          <label>
             MaxAttempts
             <input
               type="number"
               value={policy.MaxAttempts ?? 3}
               onChange={(e) => update(i, { MaxAttempts: Number(e.target.value) })}
+            />
+          </label>
+          <label>
+            MaxAttemptsPath
+            <input
+              value={policy.MaxAttemptsPath ?? ''}
+              onChange={(e) => update(i, { MaxAttemptsPath: e.target.value || undefined })}
             />
           </label>
           <label>
@@ -66,6 +80,29 @@ export function RetryEditor({ value, onChange }: Props) {
               step="0.1"
               value={policy.BackoffRate ?? 2}
               onChange={(e) => update(i, { BackoffRate: Number(e.target.value) })}
+            />
+          </label>
+          <label>
+            BackoffRatePath
+            <input
+              value={policy.BackoffRatePath ?? ''}
+              onChange={(e) => update(i, { BackoffRatePath: e.target.value || undefined })}
+            />
+          </label>
+          <label>
+            JitterSeconds
+            <input
+              type="number"
+              value={policy.JitterSeconds ?? ''}
+              onChange={(e) => update(i, { JitterSeconds: e.target.value ? Number(e.target.value) : undefined })}
+            />
+          </label>
+          <label>
+            MaxDelaySeconds
+            <input
+              type="number"
+              value={policy.MaxDelaySeconds ?? ''}
+              onChange={(e) => update(i, { MaxDelaySeconds: e.target.value ? Number(e.target.value) : undefined })}
             />
           </label>
           <button type="button" className="danger" onClick={() => remove(i)}>Remove</button>

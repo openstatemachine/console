@@ -3,6 +3,11 @@ export interface RetryPolicy {
   IntervalSeconds?: number
   MaxAttempts?: number
   BackoffRate?: number
+  JitterSeconds?: number
+  MaxDelaySeconds?: number
+  IntervalSecondsPath?: string
+  MaxAttemptsPath?: string
+  BackoffRatePath?: string
 }
 
 export interface CatchPolicy {
@@ -14,10 +19,21 @@ export interface CatchPolicy {
 export interface ChoiceRule {
   Variable?: string
   StringEquals?: string
+  StringLessThanEquals?: string
+  StringGreaterThanEquals?: string
+  StringMatches?: string
   NumericEquals?: number
   NumericGreaterThan?: number
   NumericLessThan?: number
+  NumericLessThanEquals?: number
+  NumericGreaterThanEquals?: number
   BooleanEquals?: boolean
+  IsPresent?: boolean
+  IsNull?: boolean
+  IsString?: boolean
+  IsNumeric?: boolean
+  IsBoolean?: boolean
+  IsTimestamp?: boolean
   Next?: string
 }
 
@@ -45,6 +61,16 @@ export interface TaskState extends CommonState {
   HeartbeatSeconds?: number
 }
 
+export interface HttpState extends CommonState {
+  Type: 'Http'
+  Url?: string
+  Method?: string
+  Headers?: Record<string, unknown>
+  Body?: unknown
+  Next?: string
+  End?: boolean
+}
+
 export interface PassState extends CommonState {
   Type: 'Pass'
   Result?: unknown
@@ -55,6 +81,8 @@ export interface PassState extends CommonState {
 export interface WaitState extends CommonState {
   Type: 'Wait'
   Seconds?: number
+  SecondsPath?: string
+  Timestamp?: string
   TimestampPath?: string
   Next?: string
   End?: boolean
@@ -98,12 +126,14 @@ export interface StartExecutionState extends CommonState {
   Type: 'StartExecution'
   StateMachineName?: string
   Input?: unknown
+  RunMode?: 'sync' | 'async'
   Next?: string
   End?: boolean
 }
 
 export type OsmlState =
   | TaskState
+  | HttpState
   | PassState
   | WaitState
   | ChoiceState
@@ -123,6 +153,7 @@ export interface StateMachineDefinition {
 
 export const STATE_TYPES = [
   'Task',
+  'Http',
   'Pass',
   'Wait',
   'Choice',
@@ -137,6 +168,8 @@ export function createDefaultState(type: string): OsmlState {
   switch (type) {
     case 'Task':
       return { Type: 'Task', Resource: 'js', Code: 'return input;', End: true }
+    case 'Http':
+      return { Type: 'Http', Url: 'https://api.example.com', Method: 'GET', End: true }
     case 'Pass':
       return { Type: 'Pass', End: true }
     case 'Wait':
@@ -160,7 +193,7 @@ export function createDefaultState(type: string): OsmlState {
     case 'Fail':
       return { Type: 'Fail', Error: 'States.ALL', Cause: 'Failed' }
     case 'StartExecution':
-      return { Type: 'StartExecution', StateMachineName: '', End: true }
+      return { Type: 'StartExecution', StateMachineName: '', RunMode: 'async', End: true }
     default:
       return { Type: 'Pass', End: true }
   }
