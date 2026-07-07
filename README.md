@@ -13,7 +13,7 @@ Web UI for the [Open State Machine](https://openstatemachine.org) project: autho
 
 The console is always a **separate artifact** from the engine jar. In production, nginx serves the SPA and proxies `/api` to the engine.
 
-The marketing site for [openstatemachine.org](https://openstatemachine.org) lives in the private [**openstatemachine/site**](https://github.com/openstatemachine/site) repository.
+The marketing site for [openstatemachine.org](https://openstatemachine.org) lives in the private [**openstatemachine/website**](https://github.com/openstatemachine/website) repository.
 
 ## Requirements
 
@@ -77,7 +77,7 @@ docker run -p 9000:9000 -e STATUM_API_UPSTREAM=http://host.docker.internal:8080 
 | Repository | Description |
 |------------|-------------|
 | [openstatemachine/engine](https://github.com/openstatemachine/engine) | Statum runtime, OSML language module, REST API |
-| [openstatemachine/site](https://github.com/openstatemachine/site) | Private Astro site for openstatemachine.org |
+| [openstatemachine/website](https://github.com/openstatemachine/website) | Private Astro site for openstatemachine.org |
 | [openstatemachine.org](https://openstatemachine.org) | Project site |
 
 ## License
