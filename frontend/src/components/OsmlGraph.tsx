@@ -24,7 +24,7 @@ import {
   ENDPOINT_SIZE,
   type EdgeData,
 } from '../osml/toGraph'
-import { layoutGraph, type LaidOutGraph } from '../osml/layout'
+import type { LaidOutGraph } from '../osml/layout'
 import { StateNode } from './StateNode'
 import { EndpointNode } from './EndpointNode'
 import { ContainerNode } from './ContainerNode'
@@ -220,7 +220,8 @@ function OsmlGraphInner({
   useEffect(() => {
     let cancelled = false
     const base = toGraph(definition)
-    layoutGraph(base.nodes, base.edges)
+    import('../osml/layout')
+      .then(({ layoutGraph }) => layoutGraph(base.nodes, base.edges))
       .then((result) => {
         if (cancelled) return
         setLaidOut(result)

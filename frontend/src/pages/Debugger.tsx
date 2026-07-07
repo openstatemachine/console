@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api'
-import { OsmlGraph } from '../components/OsmlGraph'
+import { OsmlGraphLazy } from '../components/OsmlGraphLazy'
 import { displayState, highlightState, isTerminalStatus } from '../osml/executionUtils'
 import { parseOsmlJson } from '../osml/validate'
 import { formatExecutionDuration, formatTimestamp } from '../utils/timeFormat'
@@ -96,7 +96,7 @@ export function Debugger() {
 
       {definition && (
         <div className="debugger-graph">
-          <OsmlGraph
+          <OsmlGraphLazy
             definition={definition}
             selectedState={graphHighlight}
             highlightState={graphHighlight}

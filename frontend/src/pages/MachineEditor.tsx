@@ -2,9 +2,9 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../api'
-import { MonacoEditorPanel } from '../components/MonacoEditorPanel'
+import { MonacoEditorLazy } from '../components/MonacoEditorLazy'
 import { ErrorBoundary } from '../components/ErrorBoundary'
-import { OsmlGraph } from '../components/OsmlGraph'
+import { OsmlGraphLazy } from '../components/OsmlGraphLazy'
 import { StatePalette } from '../components/StatePalette'
 import { StateFormPanel } from '../components/forms/StateFormPanel'
 import { getSubgraph, updateSubgraph, isPlaceholderState, type EdgeData } from '../osml/toGraph'
@@ -505,7 +505,7 @@ export function MachineEditor() {
               </div>
             </div>
             <ErrorBoundary label="Graph failed to render">
-              <OsmlGraph
+              <OsmlGraphLazy
                 definition={currentDefinition}
                 selectedState={selectedState}
                 onSelectState={setSelectedState}
@@ -565,7 +565,7 @@ export function MachineEditor() {
       {viewMode === 'code' && (
         <div className="studio-code">
           <ErrorBoundary label="JSON editor failed to render">
-            <MonacoEditorPanel
+            <MonacoEditorLazy
               definition={currentDefinition}
               onChange={handleJsonChange}
               height="100%"

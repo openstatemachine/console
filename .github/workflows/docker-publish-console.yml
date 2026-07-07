@@ -1,6 +1,5 @@
 # Console repo workflow — publishes openstatemachine/console on version tags.
 # Build context must be the repo root (shared/ is a sibling of frontend/).
-# When the engine lives in its own repo, remove docker-publish-engine.yml from here.
 name: Publish console image
 
 on:
@@ -12,7 +11,22 @@ permissions:
   contents: read
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Build console
+        run: cd frontend && npm ci && npm run build
+
   publish:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

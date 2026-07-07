@@ -1,0 +1,21 @@
+# Run the published Docker Hub image (no local build).
+#
+#   docker compose -f docker-compose.pull.yml up
+#
+# Point at a running Statum engine (default: host machine on :8080).
+# Override the tag with CONSOLE_IMAGE, e.g. openstatemachine/console:0.1.0
+
+services:
+  ui:
+    image: ${CONSOLE_IMAGE:-openstatemachine/console:latest}
+    pull_policy: always
+    ports:
+      - "${CONSOLE_PORT:-9000}:9000"
+    environment:
+      STATUM_API_UPSTREAM: ${STATUM_API_UPSTREAM:-http://host.docker.internal:8080}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:9000/ || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s

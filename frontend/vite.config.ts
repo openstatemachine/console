@@ -16,6 +16,36 @@ export default defineConfig({
   build: {
     outDir: path.isAbsolute(outDir) ? outDir : path.resolve(__dirname, outDir),
     emptyOutDir: true,
+    // ELK layout (~1.4 MB) is lazy-loaded with graph views only; not part of the initial bundle.
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return
+
+          if (id.includes('elkjs')) {
+            return 'elk'
+          }
+          if (id.includes('@xyflow')) {
+            return 'xyflow'
+          }
+          if (id.includes('monaco-editor') || id.includes('@monaco-editor')) {
+            return 'monaco'
+          }
+          if (id.includes('@rjsf')) {
+            return 'forms'
+          }
+          if (
+            id.includes('/react/') ||
+            id.includes('/react-dom/') ||
+            id.includes('react-router') ||
+            id.includes('@tanstack/react-query')
+          ) {
+            return 'react-vendor'
+          }
+        },
+      },
+    },
   },
   server: {
     port: 5173,

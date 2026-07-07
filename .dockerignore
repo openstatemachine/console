@@ -1,0 +1,27 @@
+# Dependencies and build output
+**/node_modules/
+**/dist/
+**/.astro/
+
+# Git and editor noise
+.git/
+.github/
+.cursor/
+.idea/
+*.iml
+.DS_Store
+
+# Docs and assets not required for the console image
+logos/
+CHANGELOG.md
+CONTRIBUTING.md
+SECURITY.md
+site/
+
+# Compose files are not part of the image build context
+docker-compose*.yml
+
+# Keep Docker build inputs
+!frontend/
+!shared/
+!frontend/Dockerfile

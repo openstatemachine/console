@@ -9,7 +9,7 @@ services:
       # Engine base URL for nginx to proxy browser /api calls.
       STATUM_API_UPSTREAM: ${STATUM_API_UPSTREAM:-http://host.docker.internal:8080}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9000/ >/dev/null || exit 1"]
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:9000/ || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 3

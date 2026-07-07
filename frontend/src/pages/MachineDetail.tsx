@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { ExecutionsTable } from '../components/ExecutionsTable'
 import { ErrorBoundary } from '../components/ErrorBoundary'
-import { OsmlGraph } from '../components/OsmlGraph'
+import { OsmlGraphLazy } from '../components/OsmlGraphLazy'
 import { createEmptyDefinition } from '../osml/types'
 import { parseOsmlJson } from '../osml/validate'
 
@@ -204,7 +204,7 @@ export function MachineDetail() {
           <div className="detail-definition card">
             <ErrorBoundary label="Graph failed to render">
               <div className="detail-graph-wrap">
-                <OsmlGraph
+                <OsmlGraphLazy
                   definition={definition}
                   selectedState={null}
                   onSelectState={() => {}}

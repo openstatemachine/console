@@ -50,10 +50,10 @@ cd frontend && npm run build
 
 ### Docker image
 
-Build from this repository root (the Dockerfile needs the sibling `shared/` directory):
+Build from source (the Dockerfile needs the sibling `shared/` directory):
 
 ```bash
-docker build -f frontend/Dockerfile -t statum-console .
+docker build -f frontend/Dockerfile -t openstatemachine/console .
 ```
 
 Run with an engine upstream:
@@ -65,8 +65,32 @@ STATUM_API_UPSTREAM=http://host.docker.internal:8080 docker compose up --build
 Or with `docker run`:
 
 ```bash
-docker run -p 9000:9000 -e STATUM_API_UPSTREAM=http://host.docker.internal:8080 statum-console
+docker run -p 9000:9000 -e STATUM_API_UPSTREAM=http://host.docker.internal:8080 openstatemachine/console
 ```
+
+### Docker Hub image (published)
+
+Pull and run the published image (no local Node build):
+
+```bash
+docker compose -f docker-compose.pull.yml up
+```
+
+Console at `http://localhost:9000`. Point at your Statum engine:
+
+```bash
+STATUM_API_UPSTREAM=http://host.docker.internal:8080 docker compose -f docker-compose.pull.yml up
+```
+
+Override the image tag or host port:
+
+```bash
+CONSOLE_IMAGE=openstatemachine/console:0.1.0 CONSOLE_PORT=9000 \
+  STATUM_API_UPSTREAM=http://host.docker.internal:8080 \
+  docker compose -f docker-compose.pull.yml up
+```
+
+Images are published to [`openstatemachine/console`](https://hub.docker.com/r/openstatemachine/console) on `v*` release tags (multi-arch `amd64` + `arm64`).
 
 ## CI
 

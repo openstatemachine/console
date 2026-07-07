@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { Modal } from '../components/Modal'
-import { OsmlGraph } from '../components/OsmlGraph'
+import { OsmlGraphLazy } from '../components/OsmlGraphLazy'
 import {
   displayState,
   highlightState,
@@ -231,7 +231,7 @@ export function ExecutionInspector() {
             <span className="legend-item"><span className="legend-swatch idle" /> Not reached</span>
           </div>
           <div className="inspector-graph">
-            <OsmlGraph
+            <OsmlGraphLazy
               definition={definition}
               selectedState={selectedStateName ?? selectedEvent?.stateName ?? null}
               highlightState={graphHighlight}

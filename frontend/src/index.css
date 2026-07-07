@@ -11,6 +11,15 @@ body {
   color: #0f172a;
 }
 
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
 .app-layout {
   display: flex;
   min-height: 100vh;
