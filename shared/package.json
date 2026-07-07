@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Shared OSML graph model, layout (ELK) and React-Flow node components used by the Statum console.",
+  "dependencies": {
+    "@osml/validator": "github:openstatemachine/osml-validator#main"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./types": "./src/osml/types.ts",
@@ -18,7 +21,6 @@
   },
   "peerDependencies": {
     "@xyflow/react": "*",
-    "ajv": "*",
     "elkjs": "*",
     "react": "*",
     "react-dom": "*"

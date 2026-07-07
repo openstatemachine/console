@@ -12,6 +12,7 @@
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
     "@osml/graph-kit": "file:../shared",
+    "@osml/validator": "github:openstatemachine/osml-validator#main",
     "@rjsf/core": "^6.6.2",
     "@rjsf/validator-ajv8": "^6.6.2",
     "@tanstack/react-query": "^5.101.2",

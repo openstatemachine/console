@@ -177,17 +177,16 @@ export function MachineEditor() {
 
   const validate = async () => {
     const client = validateClientSide(definition)
+    if (!client.valid) {
+      setValidationMsg(client.errors.join('\n'))
+      return
+    }
     const osmlJson = JSON.stringify(definition)
     const server = await api.validateStateMachine(osmlJson, machineName || 'draft')
-    if (client.valid && server.valid) {
+    if (server.valid) {
       setValidationMsg('Valid — ready to save.')
     } else {
-      setValidationMsg(
-        [
-          ...client.errors,
-          server.valid ? [] : [server.message ?? 'Server validation failed'],
-        ].flat().join('\n'),
-      )
+      setValidationMsg(server.message ?? 'Server validation failed')
     }
   }
 
