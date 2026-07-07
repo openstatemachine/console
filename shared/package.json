@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Shared OSML graph model, layout (ELK) and React-Flow node components used by the Statum console and the openstatemachine.org sandbox.",
+  "description": "Shared OSML graph model, layout (ELK) and React-Flow node components used by the Statum console.",
   "exports": {
     ".": "./src/index.ts",
     "./types": "./src/osml/types.ts",

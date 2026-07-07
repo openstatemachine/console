@@ -2,7 +2,7 @@
 
 Web UI for the [Open State Machine](https://openstatemachine.org) project: author OSML workflows visually, inspect executions, and use the step debugger.
 
-> The **Statum engine** (headless API) lives in [**openstatemachine/engine**](https://github.com/openstatemachine/engine). This repository contains the React console (`frontend/`), the shared graph package (`shared/`), and the marketing site (`site/`).
+> The **Statum engine** (headless API) lives in [**openstatemachine/engine**](https://github.com/openstatemachine/engine). This repository contains the React console (`frontend/`) and the shared graph package (`shared/`).
 
 ## Architecture
 
@@ -10,9 +10,10 @@ Web UI for the [Open State Machine](https://openstatemachine.org) project: autho
 |-----------|------|------|
 | Console | `frontend/` | React + Vite SPA (machine editor, executions, debugger) |
 | Graph kit | `shared/` | `@osml/graph-kit` — OSML graph model, ELK layout, React Flow nodes |
-| Site | `site/` | Astro marketing site for openstatemachine.org |
 
 The console is always a **separate artifact** from the engine jar. In production, nginx serves the SPA and proxies `/api` to the engine.
+
+The marketing site for [openstatemachine.org](https://openstatemachine.org) lives in the private [**openstatemachine/site**](https://github.com/openstatemachine/site) repository.
 
 ## Requirements
 
@@ -39,7 +40,7 @@ On first visit, complete the **setup wizard** to create the admin account. Optio
 
 ### Shared graph package
 
-OSML graph code lives in `shared/` and is linked from the console via `file:../shared`. Edit `shared/src/` and both the console and site pick up changes.
+OSML graph code lives in `shared/` and is linked from the console via `file:../shared`. Edit `shared/src/` and the console picks up changes.
 
 ## Build
 
@@ -67,12 +68,6 @@ Or with `docker run`:
 docker run -p 9000:9000 -e STATUM_API_UPSTREAM=http://host.docker.internal:8080 statum-console
 ```
 
-## Site
-
-```bash
-cd site && npm install && npm run dev
-```
-
 ## CI
 
 `npm run build` in `frontend/` on every push/PR (see `.github/workflows/ci.yml`).
@@ -82,6 +77,7 @@ cd site && npm install && npm run dev
 | Repository | Description |
 |------------|-------------|
 | [openstatemachine/engine](https://github.com/openstatemachine/engine) | Statum runtime, OSML language module, REST API |
+| [openstatemachine/site](https://github.com/openstatemachine/site) | Private Astro site for openstatemachine.org |
 | [openstatemachine.org](https://openstatemachine.org) | Project site |
 
 ## License

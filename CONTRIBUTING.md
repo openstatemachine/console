@@ -22,7 +22,7 @@ Run the engine separately (`mvn -pl engine spring-boot:run` in the [engine repo]
 
 ## Shared package
 
-The console depends on `shared/` via `file:../shared`. When changing graph types, layout, or node components, edit `shared/src/` and verify both `frontend` and `site` if applicable.
+The console depends on `shared/` via `file:../shared`. When changing graph types, layout, or node components, edit `shared/src/` and verify `frontend`.
 
 ## License
 

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://openstatemachine.org/sitemap-index.xml
